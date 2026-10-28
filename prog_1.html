@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Foundations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #001629;
+      --bg-2: #121523;
+      --panel: #181c2d;
+      --card: #252840;
+      --card-2: #32354d;
+      --text: #EBEBED;
+      --muted: rgba(233, 233, 255, 0.72);
+      --faint: rgba(235,235,237,.42);
+      --border: rgba(255,255,255,.08);
+      --accent: #32354d;
+      --accent-2: #4a4f74;
+      --primary: #32354d;
+      --block: #252840;
+      --secondary: #EBEBED;
+      --blutext: #2b8bff;
+      --danger: #e50914;
+      --shadow: 0 14px 40px rgba(0,0,0,.45);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --max: 1400px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background-image: url('ASSET/bg_home2.png');
+background-repeat: repeat-x;
+background-position: top left;
+background-color: #001529;
+      
+      color: var(--text);
+      min-height: 100vh;
+    }
+strong.blue {color: #2b8bff !important;}
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px 28px 64px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #4b5175 0%, #252840 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      letter-spacing: .08em;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-copy small {
+      display: block;
+      color: var(--faint);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 11px;
+      margin-bottom: 2px;
+    }
+
+    .brand-copy strong {
+      font-size: 24px;
+      letter-spacing: -.02em;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 430px;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+         linear-gradient(90deg, rgba(0,17,33,.96) 0%, rgba(0,17,33,.88) 34%, rgba(0,17,33,.58) 58%, rgba(0,17,33,.18) 100%),
+        url('ASSET/learning_image.png') center/cover no-repeat;
+      border: 1px solid rgba(0,54,102);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 30px;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(9,10,16,.3) 55%, rgba(9,10,16,.9) 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 42px;
+      width: min(720px, 100%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: var(--secondary);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 18px;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: .98;
+      letter-spacing: -.04em;
+      margin: 0 0 16px;
+      max-width: 10ch;
+    }
+
+    .hero p {
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 54ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform .2s ease, opacity .2s ease, background .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--secondary);
+      color: #02437f;
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,.12);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.09);
+      backdrop-filter: blur(12px);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 10px 0 16px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: -.02em;
+    }
+
+    .section-head span {
+      color: var(--faint);
+      font-size: 14px;
+    }
+
+    .course-strip {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .course-tile {
+      position: relative;
+      min-height: 220px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer;
+      background: #121521;
+      box-shadow: var(--shadow);
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .course-tile:hover {
+      transform: translateY(-2px) scale(1.01);
+      border-color: rgba(255,255,255,.35);
+    }
+
+    .course-tile.active {
+      border-color: rgba(255,255,255,.78);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.15), 0 18px 44px rgba(0,0,0,.55);
+    }
+
+    .course-backdrop {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.05);
+      transition: transform .4s ease;
+    }
+
+    .course-tile:hover .course-backdrop { transform: scale(1.09); }
+
+    .course-tile::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.34) 45%, rgba(6,8,14,.96) 100%);
+    }
+
+    .course-inner {
+      position: absolute;
+      inset: auto 0 0 0;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    .tile-kicker {
+      display: inline-flex;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: var(--secondary);
+      margin-bottom: 12px;
+      backdrop-filter: blur(6px);
+    }
+
+    .course-inner h3 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+    }
+
+    .course-inner p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+      max-width: 52ch;
+    }
+
+    .expand-panel {
+      margin-top: 18px;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #0d1019;
+      border: 1px solid rgb(1, 69, 129);
+      box-shadow: var(--shadow);
+      display: none;
+    }
+
+    .expand-panel.open { display: block; }
+
+    .panel-top-thumbs {
+      background: #001629;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding: 14px 18px 0;
+    }
+
+    .thumbs-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding-bottom: 14px;
+    }
+
+    .thumb {
+      width: 100%;
+      height: 110px;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      border: 2px solid transparent;
+      background: #1a1d29;
+      cursor: pointer;
+    }
+
+    .thumb.active {
+      border-color: #fff;
+    }
+
+    .thumb.active::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -8px;
+      transform: translateX(-50%) rotate(45deg);
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      background: linear-gradient(180deg, #ffffff 0%, #d6d6d6 100%);
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.9) contrast(1.02);
+    }
+
+    .thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.45) 100%);
+    }
+
+    .thumb span {
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      z-index: 2;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-shadow: 0 2px 12px rgba(0,0,0,.55);
+    }
+
+    .panel-hero {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      min-height: 420px;
+      background: #001c36;
+    }
+
+    .panel-copy {
+      padding: 34px 34px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .panel-copy h3 {
+      margin: 0 0 10px;
+      font-size: 38px;
+      /* font-size: clamp(28px, 4vw, 34px); */
+      letter-spacing: -.04em;
+      line-height: .98;
+      /* max-width: 14ch; */
+    }
+
+    
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 18px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .meta-pill {
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,.22);
+      color: var(--secondary);
+      font-size: 12px;
+    }
+
+    .panel-copy .lead {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      /* max-width: 48ch; */
+      margin-bottom: 22px;
+    }
+
+    .panel-launch {
+      border: 0;
+      padding: 16px 32px;
+      border-radius: 999px;
+      background: #fff;
+      color: #0f1220;
+      font-weight: 800;
+      font-size: 16px;
+      cursor: pointer;
+      white-space: nowrap;
+      display: inline-block;
+      margin-top: 8px;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .panel-launch:hover {
+      transform: scale(1.04);
+      box-shadow: 0 4px 18px rgba(255,255,255,.18);
+    }
+    .panel-launch:active { transform: scale(.97); }
+    .panel-launch.locked {
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.42);
+      cursor: not-allowed;
+    }
+    .panel-launch.locked:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .module-highlight {
+      margin-bottom: 18px;
+      color: var(--blutext);
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -.02em;
+    }
+
+    .progress-line {
+      width: 100%;
+      height: 4px;
+      background: rgba(255,255,255,.14);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .progress-line > span {
+      display: block;
+      height: 100%;
+      width: 28%;
+      background: #e50914;
+    }
+
+    .panel-note {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 50ch;
+    }
+
+    .panel-art {
+      position: relative;
+      min-height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .panel-art::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(15,17,26,0) 0%, rgba(15,17,26,.15) 30%, rgba(15,17,26,.55) 100%);
+    }
+/* 
+    .play-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,.78);
+      background: rgba(0,0,0,.18);
+      display: grid;
+      place-items: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .play-badge::before {
+      content: '';
+      margin-left: 6px;
+      border-style: solid;
+      border-width: 14px 0 14px 22px;
+      border-color: transparent transparent transparent white;
+    } */
+
+    .panel-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding: 0 34px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: #0c0f18;
+    }
+
+    .panel-tab {
+      padding: 18px 0 14px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--faint);
+      border-bottom: 3px solid transparent;
+    }
+
+    .panel-tab.active {
+      color: #fff;
+      border-color: var(--accent-2);
+    }
+
+    .episodes {
+      /* padding: 22px 28px 30px; */
+      background: linear-gradient(180deg, #0d1019 0%, #101321 100%);
+    }
+
+    .episodes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .episode-card {
+      display: grid;
+      grid-template-columns: 110px 1fr auto;
+      gap: 16px;
+      align-items: center;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px;
+      padding: 12px;
+      transition: background .2s ease, transform .2s ease, border-color .2s ease;
+    }
+
+    .episode-card:hover {
+      background: rgba(255,255,255,.055);
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.12);
+    }
+
+    .episode-thumb {
+      width: 110px;
+      height: 66px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #1a1d2b;
+      position: relative;
+    }
+
+    .episode-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .episode-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.35) 100%);
+    }
+
+    .episode-copy small {
+      display: block;
+      color: var(--faint);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 11px;
+    }
+
+    .episode-copy strong {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 4px;
+      letter-spacing: -.01em;
+    }
+
+    .episode-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .episode-action {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+    }
+
+    .status {
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .status.open { background: rgb(43, 139, 255); color: #ffffff; }
+    .status.locked { background: rgba(66, 66, 66, 0.348); color: var(--faint); }
+
+    .launch {
+      border: 0;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: #fff;
+      color: #0f1220;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .launch.locked {
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.42);
+      cursor: not-allowed;
+    }
+
+    .helper-cards {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .helper-card {
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(37,40,64,.92) 0%, rgba(22,25,41,.96) 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .helper-card h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .helper-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .footer-note {
+      margin-top: 28px;
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1100px) {
+      .panel-hero,
+      .episodes-grid,
+      .helper-cards { grid-template-columns: 1fr; }
+      .panel-art { min-height: 320px; }
+    }
+
+    @media (max-width: 780px) {
+      .page { padding: 18px 16px 44px; }
+      .course-strip { grid-template-columns: 1fr; }
+      .hero { min-height: 360px; }
+      .hero-content { padding: 24px; }
+      .panel-copy { padding: 24px 20px; }
+      .panel-tabs { padding: 0 20px; gap: 18px; }
+      .episodes { padding: 18px; }
+      .episode-card {
+        grid-template-columns: 1fr;
+        align-items: flex-start;
+      }
+      .episode-action {
+        align-items: flex-start;
+      }
+      .episode-thumb { width: 100%; height: 140px; }
+    }
+  
+    /* =====================================================
+       ANIMAZIONI — Netflix-style UX
+       ===================================================== */
+
+    /* Fade up entrata elementi */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(.96) translateY(12px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes slideDown {
+      from { opacity: 0; max-height: 0; transform: translateY(-8px); }
+      to   { opacity: 1; max-height: 2400px; transform: translateY(0); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -700px 0; }
+      100% { background-position: 700px 0; }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,.0); }
+      50%       { box-shadow: 0 0 0 6px rgba(255,255,255,.08); }
+    }
+    @keyframes thumbPop {
+      0%   { transform: scale(1); }
+      45%  { transform: scale(1.07); }
+      100% { transform: scale(1); }
+    }
+
+    /* Entrata pagina */
+    .topbar    { animation: fadeUp .55s cubic-bezier(.16,1,.3,1) both; }
+    .hero      { animation: scaleIn .7s cubic-bezier(.16,1,.3,1) .08s both; }
+    .section-head { animation: fadeUp .5s cubic-bezier(.16,1,.3,1) .22s both; }
+    .course-strip { animation: fadeUp .55s cubic-bezier(.16,1,.3,1) .32s both; }
+
+    /* Panel apertura */
+    .expand-panel.open {
+      animation: scaleIn .42s cubic-bezier(.16,1,.3,1) both;
+    }
+
+    /* Panel hero — la copy entra da sinistra, l'art da destra */
+    .expand-panel.open .panel-copy {
+      animation: fadeUp .5s cubic-bezier(.16,1,.3,1) .08s both;
+    }
+    .expand-panel.open .panel-art {
+      animation: fadeIn .6s cubic-bezier(.16,1,.3,1) .12s both;
+    }
+
+    /* Episodi — staggered entrata */
+    .expand-panel.open .episode-card:nth-child(1)  { animation: fadeUp .4s cubic-bezier(.16,1,.3,1) .08s both; }
+    .expand-panel.open .episode-card:nth-child(2)  { animation: fadeUp .4s cubic-bezier(.16,1,.3,1) .14s both; }
+    .expand-panel.open .episode-card:nth-child(3)  { animation: fadeUp .4s cubic-bezier(.16,1,.3,1) .20s both; }
+    .expand-panel.open .episode-card:nth-child(4)  { animation: fadeUp .4s cubic-bezier(.16,1,.3,1) .26s both; }
+    .expand-panel.open .episode-card:nth-child(5)  { animation: fadeUp .4s cubic-bezier(.16,1,.3,1) .32s both; }
+    .expand-panel.open .episode-card:nth-child(6)  { animation: fadeUp .4s cubic-bezier(.16,1,.3,1) .38s both; }
+    .expand-panel.open .episode-card:nth-child(7)  { animation: fadeUp .4s cubic-bezier(.16,1,.3,1) .44s both; }
+
+    /* Thumbs row — staggered */
+    .expand-panel.open .thumb:nth-child(1) { animation: fadeUp .35s cubic-bezier(.16,1,.3,1) .05s both; }
+    .expand-panel.open .thumb:nth-child(2) { animation: fadeUp .35s cubic-bezier(.16,1,.3,1) .10s both; }
+    .expand-panel.open .thumb:nth-child(3) { animation: fadeUp .35s cubic-bezier(.16,1,.3,1) .15s both; }
+    .expand-panel.open .thumb:nth-child(4) { animation: fadeUp .35s cubic-bezier(.16,1,.3,1) .20s both; }
+    .expand-panel.open .thumb:nth-child(5) { animation: fadeUp .35s cubic-bezier(.16,1,.3,1) .25s both; }
+    .expand-panel.open .thumb:nth-child(6) { animation: fadeUp .35s cubic-bezier(.16,1,.3,1) .30s both; }
+    .expand-panel.open .thumb:nth-child(7) { animation: fadeUp .35s cubic-bezier(.16,1,.3,1) .35s both; }
+
+    /* Hover: course tile — scale con glow */
+    .course-tile {
+      transition: transform .28s cubic-bezier(.16,1,.3,1),
+                  border-color .28s ease,
+                  box-shadow .28s ease;
+    }
+    .course-tile:hover {
+      transform: translateY(-4px) scale(1.015);
+      box-shadow: 0 24px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.18);
+    }
+    .course-tile.active { animation: pulseGlow 2.4s ease-in-out infinite; }
+
+    /* Hover: episode card — lift + border glow */
+    .episode-card {
+      transition: background .22s ease, transform .22s cubic-bezier(.16,1,.3,1),
+                  border-color .22s ease, box-shadow .22s ease;
+    }
+    .episode-card:hover {
+      background: rgba(255,255,255,.065);
+      transform: translateY(-2px) scale(1.008);
+      border-color: rgba(255,255,255,.16);
+      box-shadow: 0 8px 28px rgba(0,0,0,.35);
+    }
+
+    /* Hover: thumb pop */
+    .thumb {
+      transition: transform .2s cubic-bezier(.16,1,.3,1), border-color .18s ease;
+    }
+    .thumb:hover { transform: scale(1.06) translateY(-2px); }
+    /* .thumb.active { animation: thumbPop .3s cubic-bezier(.16,1,.3,1) both; } */
+
+    /* Hover: btn glow */
+    .btn {
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease, background .2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 28px rgba(235,235,237,.22);
+    }
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.18);
+    }
+
+    /* Hover: launch button pulse */
+    .launch:not(.locked) {
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .launch:not(.locked):hover {
+      transform: scale(1.04);
+      box-shadow: 0 4px 18px rgba(255,255,255,.18);
+    }
+    .launch:not(.locked):active { transform: scale(.97); }
+
+    /* Play badge rotation al hover */
+    .panel-art:hover .play-badge {
+      transform: translate(-50%, -50%) scale(1.08);
+      border-color: rgba(255,255,255,1);
+      transition: transform .22s ease, border-color .22s ease;
+    }
+    .play-badge {
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+    }
+
+    /* Shimmer skeleton loader sulle thumb prima che le immagini carichino */
+    .thumb img {
+      transition: opacity .35s ease, filter .35s ease;
+    }
+    .thumb img:not([src]) {
+      background: linear-gradient(90deg, #1a1d2b 25%, #22253a 50%, #1a1d2b 75%);
+      background-size: 700px 100%;
+      animation: shimmer 1.4s infinite linear;
+    }
+
+    /* Smooth background-image transition nel panel art */
+    .panel-art {
+      transition: background-image .4s ease;
+    }
+
+    /* Tab hover */
+    .panel-tab {
+      cursor: pointer;
+      transition: color .18s ease, border-color .18s ease;
+    }
+    .panel-tab:hover:not(.active) { color: rgba(255,255,255,.75); }
+
+    /* Helper cards entrata */
+    .helper-cards { animation: fadeUp .5s cubic-bezier(.16,1,.3,1) .45s both; }
+    .helper-card {
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+    .helper-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,.15);
+      box-shadow: 0 12px 36px rgba(0,0,0,.38);
+    }
+
+    /* Riduci animazioni se utente lo preferisce */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    /* Home button */
+    .home-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      cursor: pointer;
+      transition: background .22s ease, border-color .22s ease, transform .22s ease, box-shadow .22s ease;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .home-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: rgba(43,139,255,1);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke .22s ease;
+    }
+    .home-btn:hover {
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.25);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,.35);
+    }
+    .home-btn:hover svg {
+      stroke: #ffffff;
+    }
+    .home-btn:active {
+      transform: translateY(0) scale(.97);
+    }
+ /* ===== CANVAS BACKGROUND ===== */
+    #network-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* ===== DEMO CONTENT (remove in production) ===== */
+    .demo-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .demo-content h1 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: #1a3a5c;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .demo-content p {
+      font-size: 1.1rem;
+      color: #4a6a8a;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+   <!-- Canvas for the animated network background -->
+  <canvas id="network-bg"></canvas>
+  <div class="page">
+    <header class="topbar">
+     <!-- Solo logo, senza testo affianco -->
+<div class="brand">
+  <img src="ASSET/logo.png" alt="Nome Cliente" 
+       style="height:44px; width:auto; display:block;">
+</div>
+<!-- Home icon a destra -->
+     <a href="javascript:history.back()" class="home-btn" title="Home">
+       <svg viewBox="0 0 24 24"><path d="M3 12L12 3l9 9"/><path d="M5 10v9a1 1 0 001 1h3.5v-5h5v5H18a1 1 0 001-1v-9"/></svg>
+     </a>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h2>People Manager <strong class="blue">Onboarding programs</strong></h2>
+        <h1><strong class="blue">Digital</strong> Foundations</h1>
+        <p>Build your leadership baseline with concise, on-demand e-learning modules covering frameworks, tools, policies, and more.</p>
+        
+      </div>
+      
+    </section>
+
+   <section>
+<div class="section-head">
+        <h2>Modules</h2>
+       
+      </div>
+</section>
+
+
+
+    <section class="expand-panel open" id="panel">
+      
+      <div class="panel-top-thumbs">
+        <div class="thumbs-row" id="thumbsRow"></div>
+      </div>
+
+      <div class="panel-hero">
+        <div class="panel-copy">
+          <div>
+            <span id="panelMetaB"></span><br><br>
+
+            <h3 id="panelTitle"></h3>
+            <div class="meta-row">
+              <span id="panelMetaA"></span>
+            </div>
+            <div class="module-highlight" id="panelEpisode"></div>
+            
+            <p class="lead" id="panelDescription"></p>
+            <button class="panel-launch" id="panelLaunchBtn">Launch module</button>
+          </div>
+        </div>
+
+
+        <div class="panel-art" id="panelArt">
+          <div class="play-badge"></div>
+        </div>
+      </div>
+
+      <!-- <div class="panel-tabs">
+        
+        <div class="panel-tab active">Modules</div>
+       
+      </div> -->
+
+      <div class="episodes">
+        <div class="episodes-grid" id="episodesGrid"></div>
+      </div>
+    </section>
+
+    
+  <script>
+    const library = {
+      course1: {
+        title: 'Program Onboarding',
+        metaA: 'Academy',
+        metaB: '8 Module',
+        art: 'img2.jpg',
+        tiles: [
+          {
+            n: 'Module 01',
+            domanda: 'What does leadership mean?',
+            durata: 'Course duration: 30 min',
+            title: 'Leadership Framework Introduction & Overview',
+            subtitle: 'Introduction to the Framework',
+            desc: 'People Managers understand how leadership is defined, they understand what is expected of them and what provides them with to help them succeed as leaders.',
+            img: 'ASSET/MOD_1.png',
+            locked: false,
+            url: '#'
+          },
+          {
+            n: 'Module 02',
+            domanda: 'What we stand for at company',
+            durata: 'Course duration: 30 min',
+            title: 'Values & Identity',
+            subtitle: 'Introduction to Company values and people vision',
+            desc: 'People Managers know what Company\'s values are and how they are expected to contribute to them, they understand Company\'s vision and mission, they know what made Company what it is today.',
+            img: 'ASSET/MOD_2.png',
+            locked: true,
+            url: '#'
+          },
+          {
+            n: 'Module 03',
+            domanda: 'Find your way around HR tools',
+            durata: 'Course duration: 30 min',
+            title: 'Management & HR Systems',
+            subtitle: 'Introduction to important systems',
+            desc: 'People Managers understand what system serves which purpose and how to use them in daily people management \(HiBob=performance, Zucchetti=administration, IMC=training\).',
+            img: 'ASSET/MOD_3.png',
+            locked: true,
+            url: '#'
+          },
+          {
+            n: 'Module 04',
+            domanda: 'The performance cycle, end to end',
+            durata: 'Course duration: 30 min',
+            title: 'Performance Management & OKRs',
+            subtitle: 'Performance Cycle & OKRs',
+            desc: 'People Managers understand the yearly performance cycle, the expectations towards the manager and responsibilities towards employees.',
+            
+            img: 'ASSET/MOD_4.png',
+            locked: true,
+            url: '#'
+          },
+          {
+            n: 'Module 05',
+            domanda: 'Create an Engaging Work Environment',
+            durata: 'Course duration: 30 min',
+            title: 'Employment Law',
+            subtitle: 'Italian Employment Law',
+            desc: 'People managers have a basic understanding of their legal duties towards employees as well as the legal implications of their actions, they have a basic understanding of the rights of employees.',
+            img: 'ASSET/MOD_5.png',
+            locked: true,
+            url: '#'
+          },
+          {
+            n: 'Module 06',
+            domanda: 'Make consistent people decisions',
+            durata: 'Course duration: 30 min',
+            title: 'HR Policies & Compliance',
+            subtitle: 'IMS',
+            desc: 'People Managers know how Company ensures that there is a certain standard to how work is carried out.',
+            img: 'ASSET/MOD_6.png',
+            locked: true,
+            url: '#'
+          },
+          {
+            n: 'Module 07',
+            domanda: 'Employment law for People Managers',
+            durata: 'Course duration: 30 min',
+            title: 'Employee Engagament',
+            subtitle: 'Engagement',
+            desc: 'People Managers understand that there is an engagement survey, why it is in place and what shall be achieved with it. How results are met with Action Planning.',
+            img: 'ASSET/MOD_7.png',
+            locked: true,
+            url: '#'
+          },
+          {
+            n: 'Module 08',
+            domanda: 'How does compensation work?',
+            durata: 'Course duration: 30 min',
+            title: 'Compensation Framework',
+            subtitle: 'Company Salary Cyc',
+            desc: 'People Managers know how the salary cycle works and how bonus is linked to performance.',
+            img: 'ASSET/MOD_8.png',
+            locked: true,
+            url: '#'
+          },
+          {
+            n: 'Module 09',
+            domanda: 'Think like a project leader, deliver like one',
+            durata: 'Course duration: 6 min',
+            title: 'Fundamentals of Project Management',
+            subtitle: 'Company Salary Cyc',
+            desc: 'People Managers understand why a project management mindset is essential to their role, learn the key concepts behind effective project delivery, and apply six Golden Rules to manage initiatives with clarity and accountability.',
+            img: 'ASSET/MOD_9.png',
+            locked: true,
+            url: '#'
+          }
+        ]
+      },
+
+
+
+    };
+
+    let activeCourse = 'course1';
+    let activeEpisode = 0;
+
+   function openCourse(courseKey) {
+  activeCourse = courseKey;
+  activeEpisode = 0;
+
+  // Aggiorna tile attiva
+  document.getElementById('tile-course1').classList.toggle('active', courseKey === 'course1');
+  document.getElementById('tile-course2').classList.toggle('active', courseKey === 'course2');
+
+  // Aggiorna stile bottoni hero
+  const btn1 = document.getElementById('btn-course1');
+  const btn2 = document.getElementById('btn-course2');
+
+  if (courseKey === 'course1') {
+    btn1.classList.remove('btn-secondary');
+    btn1.classList.add('btn-primary');
+    btn2.classList.remove('btn-primary');
+    btn2.classList.add('btn-secondary');
+  } else {
+    btn2.classList.remove('btn-secondary');
+    btn2.classList.add('btn-primary');
+    btn1.classList.remove('btn-primary');
+    btn1.classList.add('btn-secondary');
+  }
+
+  renderPanel();
+  document.getElementById('panel').classList.remove('open');
+  void document.getElementById('panel').offsetWidth;
+  document.getElementById('panel').classList.add('open');
+}
+
+    function selectEpisode(index) {
+      activeEpisode = index;
+      renderPanel();
+    }
+
+    function launchModule(url, title, locked) {
+      if (locked) return;
+      if (!url || url === '#') {
+        alert('PH SCORM: sostituisci l\'URL placeholder con il link reale del pacchetto SCORM per il modulo "' + title + '".\n\nEsempio: carichi il pacchetto sull\'LMS e incolli qui l\'URL di lancio generato.');
+        return;
+      }
+      window.open(url, '_blank', 'noopener');
+    }
+
+    function renderPanel() {
+      const course = library[activeCourse];
+      const episode = course.tiles[activeEpisode];
+
+      document.getElementById('panelTitle').textContent = episode.title;
+      document.getElementById('panelMetaA').textContent = episode.durata;
+      document.getElementById('panelMetaB').textContent = episode.n;
+      document.getElementById('panelEpisode').textContent = episode.domanda;
+      document.getElementById('panelDescription').innerHTML = episode.desc;
+
+      // Update panel launch button
+      const panelLaunchBtn = document.getElementById('panelLaunchBtn');
+      if (episode.locked) {
+        panelLaunchBtn.textContent = 'Coming soon';
+        panelLaunchBtn.classList.add('locked');
+        panelLaunchBtn.onclick = null;
+      } else {
+        panelLaunchBtn.textContent = 'Launch module';
+        panelLaunchBtn.classList.remove('locked');
+        panelLaunchBtn.onclick = function() { launchModule(episode.url, episode.title, episode.locked); };
+      }
+
+      document.getElementById('panelArt').style.backgroundImage = "linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.12)), url('" + episode.img + "')";
+
+
+
+
+      
+      const thumbsRow = document.getElementById('thumbsRow');
+      thumbsRow.innerHTML = course.tiles.map((item, index) => `
+        <div class="thumb ${index === activeEpisode ? 'active' : ''}" onclick="selectEpisode(${index})">
+          <img src="${item.img}" alt="${item.title}">
+          <div class="thumb-overlay"></div>
+          <span>${item.title}</span>
+        </div>
+      `).join('');
+
+      
+    }
+
+    renderPanel();
+
+    // Tab switching con animazione
+    document.querySelectorAll('.panel-tab').forEach((tab, i, tabs) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+
+    // Re-trigger stagger animation on panel reopen
+    const origOpenCourse = openCourse;
+    function triggerPanelAnim() {
+      const panel = document.getElementById('panel');
+      panel.classList.remove('open');
+      void panel.offsetWidth; // reflow
+      panel.classList.add('open');
+    }
+ (() => {
+    'use strict';
+
+    /* ──────────────────────────────────────────────
+       CONFIGURATION — tweak these to taste
+    ────────────────────────────────────────────── */
+    const CONFIG = {
+      // Particle count is relative to canvas area
+      particleDensity: 0.00012,   // particles per px² (increase for denser mesh)
+      minParticles: 80,
+      maxParticles: 300,
+
+      // Appearance
+      nodeColor: '#1565a0',       // blue nodes
+      lineColor: 'rgba(21, 101, 160, ',  // line base (alpha appended dynamically)
+      nodeMinRadius: 1.5,
+      nodeMaxRadius: 3.5,
+      lineWidth: 0.6,
+
+      // Connections
+      connectionDistance: 160,     // max px distance to draw a line
+
+      // Movement
+      speedMin: 0.15,
+      speedMax: 0.45,
+
+      // Concentration: particles spawn more densely in the top-left quadrant
+      // to mimic the reference image pattern
+      concentrationBias: 0.65,    // 0 = uniform, 1 = fully top-left
+    };
+
+    /* ──────────────────────────────────────────────
+       SETUP
+    ────────────────────────────────────────────── */
+    const canvas = document.getElementById('network-bg');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let width, height;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    function biasedRandom(bias) {
+      // Returns a value between 0 and 1, biased toward 0
+      // Higher bias → more values near 0
+      const r = Math.random();
+      return Math.pow(r, 1 + bias * 2);
+    }
+
+    function createParticles() {
+      const area = width * height;
+      let count = Math.round(area * CONFIG.particleDensity);
+      count = Math.max(CONFIG.minParticles, Math.min(CONFIG.maxParticles, count));
+
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        const useBias = Math.random() < CONFIG.concentrationBias;
+        particles.push({
+          x: useBias ? biasedRandom(0.6) * width : Math.random() * width,
+          y: useBias ? biasedRandom(0.5) * height : Math.random() * height,
+          vx: (Math.random() - 0.5) * 2 * CONFIG.speedMax,
+          vy: (Math.random() - 0.5) * 2 * CONFIG.speedMax,
+          r: CONFIG.nodeMinRadius + Math.random() * (CONFIG.nodeMaxRadius - CONFIG.nodeMinRadius),
+        });
+      }
+    }
+
+    /* ──────────────────────────────────────────────
+       ANIMATION LOOP
+    ────────────────────────────────────────────── */
+    function update() {
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Soft bounce off edges
+        if (p.x < -50) p.x = width + 50;
+        if (p.x > width + 50) p.x = -50;
+        if (p.y < -50) p.y = height + 50;
+        if (p.y > height + 50) p.y = -50;
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+
+      const maxDist = CONFIG.connectionDistance;
+      const maxDist2 = maxDist * maxDist;
+
+      // Draw lines
+      ctx.lineWidth = CONFIG.lineWidth;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist2 = dx * dx + dy * dy;
+
+          if (dist2 < maxDist2) {
+            const dist = Math.sqrt(dist2);
+            const alpha = 1 - dist / maxDist;
+            ctx.strokeStyle = CONFIG.lineColor + (alpha * 0.45).toFixed(3) + ')';
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw nodes
+      ctx.fillStyle = CONFIG.nodeColor;
+      for (const p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function loop() {
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    /* ──────────────────────────────────────────────
+       INIT
+    ────────────────────────────────────────────── */
+    resize();
+    createParticles();
+    loop();
+
+    // Debounced resize handler
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        resize();
+        createParticles();
+      }, 250);
+    });
+  })();
+  </script>
+</body>
+</html>
