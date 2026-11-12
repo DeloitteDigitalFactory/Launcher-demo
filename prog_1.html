@@ -4,27 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Digital Foundations</title>
- 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
-
-    @font-face {
-  font-family: "PP Neue Montreal";
-  src: url("ASSET/fonts/PPNeueMontreal-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: auto;
-  
-}
-
-
     :root {
-      --bg: #eff1f5;
-      --bg-2: #eff1f5;
+      --bg: #001629;
+      --bg-2: #121523;
       --panel: #181c2d;
       --card: #252840;
       --card-2: #32354d;
-      --text: #fff;
-      --muted: rgba(235,235,237,.72);
+      --text: #EBEBED;
+      --muted: rgba(233, 233, 255, 0.72);
       --faint: rgba(235,235,237,.42);
       --border: rgba(255,255,255,.08);
       --accent: #32354d;
@@ -32,6 +23,7 @@
       --primary: #32354d;
       --block: #252840;
       --secondary: #EBEBED;
+      --blutext: #2b8bff;
       --danger: #e50914;
       --shadow: 0 14px 40px rgba(0,0,0,.45);
       --radius: 16px;
@@ -40,25 +32,24 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     html, body { margin: 0; padding: 0; }
     body {
-      font-family: "PP Neue Montreal", Arial, sans-serif;
-      /* background-image: url('ASSET/bg_home2.png'); */
-background-repeat: no-repeat;
-background-position: top right;
-background-color: #EFF1F5;
+      font-family: 'Lato', sans-serif;
+      background-image: url('ASSET/bg_home2.png');
+background-repeat: repeat-x;
+background-position: top left;
+background-color: #001529;
       
       color: var(--text);
       min-height: 100vh;
     }
-
+strong.blue {color: #2b8bff !important;}
     .page {
       max-width: var(--max);
       margin: 0 auto;
       padding: 22px 28px 64px;
     }
-/* strong.blue {color: #2b8bff !important;} */
+
     .topbar {
       display: flex;
       align-items: center;
@@ -78,11 +69,11 @@ background-color: #EFF1F5;
       height: 52px;
       border-radius: 12px;
       background: linear-gradient(145deg, #4b5175 0%, #252840 100%);
-      /* border: 1px solid rgba(255,255,255,.08); */
+      border: 1px solid rgba(255,255,255,.08);
       display: grid;
       place-items: center;
       font-weight: 900;
-      /* letter-spacing: .2em; */
+      letter-spacing: .08em;
       box-shadow: var(--shadow);
     }
 
@@ -90,30 +81,29 @@ background-color: #EFF1F5;
       display: block;
       color: var(--faint);
       text-transform: uppercase;
-      /* letter-spacing: .20em; */
+      letter-spacing: .14em;
       font-size: 11px;
       margin-bottom: 2px;
     }
 
     .brand-copy strong {
       font-size: 24px;
-      /* letter-spacing: -.02em; */
+      letter-spacing: -.02em;
     }
 
     .hero {
       position: relative;
       min-height: 430px;
-      border-radius: 15px;
+      border-radius: 28px;
       overflow: hidden;
       background:
-         linear-gradient(90deg, rgba(17,17,17,.96) 0%, rgba(17,17,17,.88) 34%, rgba(17,17,17,.58) 58%, rgba(17,17,17,.18) 100%),
+         linear-gradient(90deg, rgba(0,17,33,.96) 0%, rgba(0,17,33,.88) 34%, rgba(0,17,33,.58) 58%, rgba(0,17,33,.18) 100%),
         url('ASSET/learning_image.png') center/cover no-repeat;
-      
+      border: 1px solid rgba(0,54,102);
       box-shadow: var(--shadow);
       display: flex;
       align-items: flex-end;
       margin-bottom: 30px;
-      /* color: #fff !important; */
     }
 
     .hero::after {
@@ -141,7 +131,7 @@ background-color: #EFF1F5;
       color: var(--secondary);
       font-size: 12px;
       text-transform: uppercase;
-      /* letter-spacing: .12em; */
+      letter-spacing: .12em;
       margin-bottom: 18px;
       backdrop-filter: blur(12px);
     }
@@ -149,7 +139,7 @@ background-color: #EFF1F5;
     .hero h1 {
       font-size: clamp(38px, 6vw, 68px);
       line-height: .98;
-      /* letter-spacing: .01em; */
+      letter-spacing: -.04em;
       margin: 0 0 16px;
       max-width: 10ch;
     }
@@ -170,7 +160,7 @@ background-color: #EFF1F5;
 
     .btn {
       border: 0;
-      border-radius: 8px;
+      border-radius: 999px;
       padding: 14px 22px;
       font-weight: 700;
       font-size: 15px;
@@ -181,13 +171,12 @@ background-color: #EFF1F5;
     .btn:hover { transform: translateY(-1px); }
     .btn-primary {
       background: var(--secondary);
-      color: #171717;
+      color: #02437f;
     }
-
     .btn-secondary {
       background: rgba(255,255,255,.12);
       color: var(--text);
-      /* border: 1px solid rgba(255,255,255,.09); */
+      border: 1px solid rgba(255,255,255,.09);
       backdrop-filter: blur(12px);
     }
 
@@ -202,8 +191,7 @@ background-color: #EFF1F5;
     .section-head h2 {
       margin: 0;
       font-size: 24px;
-      /* letter-spacing: -.02em; */
-      color: #171717 !important;
+      letter-spacing: -.02em;
     }
 
     .section-head span {
@@ -219,10 +207,10 @@ background-color: #EFF1F5;
 
     .course-tile {
       position: relative;
-      min-height: 350px;
-      border-radius: 12px;
+      min-height: 220px;
+      border-radius: 18px;
       overflow: hidden;
-      /* border: 2px solid transparent; */
+      border: 2px solid transparent;
       cursor: pointer;
       background: #121521;
       box-shadow: var(--shadow);
@@ -268,7 +256,7 @@ background-color: #EFF1F5;
       display: inline-flex;
       font-size: 11px;
       text-transform: uppercase;
-      /* letter-spacing: .14em; */
+      letter-spacing: .14em;
       padding: 6px 10px;
       border-radius: 999px;
       background: rgba(255,255,255,.08);
@@ -281,7 +269,7 @@ background-color: #EFF1F5;
       margin: 0 0 8px;
       font-size: 28px;
       line-height: 1.05;
-      /* letter-spacing: .03em; */
+      letter-spacing: -.03em;
     }
 
     .course-inner p {
@@ -294,10 +282,10 @@ background-color: #EFF1F5;
 
     .expand-panel {
       margin-top: 18px;
-      border-radius: 15px;
+      border-radius: 22px;
       overflow: hidden;
       background: #0d1019;
-      /* border: 1px solid rgba(255,255,255,.08); */
+      border: 1px solid rgb(1, 69, 129);
       box-shadow: var(--shadow);
       display: none;
     }
@@ -305,7 +293,7 @@ background-color: #EFF1F5;
     .expand-panel.open { display: block; }
 
     .panel-top-thumbs {
-      background: #090b12;
+      background: #001629;
       border-bottom: 1px solid rgba(255,255,255,.08);
       padding: 14px 18px 0;
     }
@@ -370,12 +358,11 @@ background-color: #EFF1F5;
       text-shadow: 0 2px 12px rgba(0,0,0,.55);
     }
 
-   
     .panel-hero {
       display: grid;
       grid-template-columns: 1.05fr .95fr;
       min-height: 420px;
-      background: #fff;
+      background: #001c36;
     }
 
     .panel-copy {
@@ -383,28 +370,18 @@ background-color: #EFF1F5;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      color: #171717 !important;
     }
-
-    /* .panel-copy h3 {
-      margin: 0 0 10px;
-      font-size: clamp(34px, 4vw, 52px);
-      letter-spacing: .04em;
-      line-height: .98;
-      max-width: 12ch;
-      color: #171717 !important;
-    } */
 
     .panel-copy h3 {
       margin: 0 0 10px;
       font-size: 38px;
       /* font-size: clamp(28px, 4vw, 34px); */
-      /* letter-spacing: -.04em; */
+      letter-spacing: -.04em;
       line-height: .98;
       /* max-width: 14ch; */
-      color: #171717 !important;
     }
 
+    
 
     .meta-row {
       display: flex;
@@ -413,32 +390,33 @@ background-color: #EFF1F5;
       align-items: center;
       margin-bottom: 18px;
       font-size: 14px;
-      color: #171717 !important;
+      font-weight: 700;
+      color: var(--muted);
     }
 
     .meta-pill {
       padding: 4px 8px;
       border-radius: 4px;
-      /* border: 1px solid rgba(255,255,255,.22); */
+      border: 1px solid rgba(255,255,255,.22);
       color: var(--secondary);
       font-size: 12px;
     }
 
     .panel-copy .lead {
-      color: #171717;
+      color: var(--muted);
       font-size: 17px;
       line-height: 1.7;
-      max-width: 48ch;
+      /* max-width: 48ch; */
       margin-bottom: 22px;
     }
 
     .panel-launch {
       border: 0;
       padding: 16px 32px;
-      border-radius: 10px;
-      background: #0071d6;
-      color: #fff;
-      font-weight: 500;
+      border-radius: 999px;
+      background: #fff;
+      color: #0f1220;
+      font-weight: 800;
       font-size: 16px;
       cursor: pointer;
       white-space: nowrap;
@@ -448,13 +426,12 @@ background-color: #EFF1F5;
     }
     .panel-launch:hover {
       transform: scale(1.04);
-      /* box-shadow: 0 4px 18px rgba(255,255,255,.18); */
-      background: #171717;
+      box-shadow: 0 4px 18px rgba(255,255,255,.18);
     }
     .panel-launch:active { transform: scale(.97); }
     .panel-launch.locked {
-      background: #ccc;
-      color: #a8a8a8;
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.42);
       cursor: not-allowed;
     }
     .panel-launch.locked:hover {
@@ -462,13 +439,12 @@ background-color: #EFF1F5;
       box-shadow: none;
     }
 
-
     .module-highlight {
       margin-bottom: 18px;
-      color: #171717;
-      font-size: 20px;
+      color: var(--blutext);
+      font-size: 24px;
       font-weight: 900;
-      /* letter-spacing: .02em; */
+      letter-spacing: -.02em;
     }
 
     .progress-line {
@@ -505,7 +481,7 @@ background-color: #EFF1F5;
       content: '';
       position: absolute;
       inset: 0;
-      /* background: linear-gradient(90deg, rgba(15,17,26,0) 0%, rgba(15,17,26,.15) 30%, rgba(15,17,26,.55) 100%); */
+      background: linear-gradient(90deg, rgba(15,17,26,0) 0%, rgba(15,17,26,.15) 30%, rgba(15,17,26,.55) 100%);
     }
 /* 
     .play-badge {
@@ -530,7 +506,8 @@ background-color: #EFF1F5;
       border-width: 14px 0 14px 22px;
       border-color: transparent transparent transparent white;
     } */
-.panel-tabs {
+
+    .panel-tabs {
       display: flex;
       flex-wrap: wrap;
       gap: 24px;
@@ -544,7 +521,7 @@ background-color: #EFF1F5;
       padding: 18px 0 14px;
       font-size: 13px;
       font-weight: 700;
-      /* letter-spacing: .08em; */
+      letter-spacing: .08em;
       text-transform: uppercase;
       color: var(--faint);
       border-bottom: 3px solid transparent;
@@ -611,7 +588,7 @@ background-color: #EFF1F5;
       color: var(--faint);
       margin-bottom: 4px;
       text-transform: uppercase;
-      /* letter-spacing: .12em; */
+      letter-spacing: .12em;
       font-size: 11px;
     }
 
@@ -619,7 +596,7 @@ background-color: #EFF1F5;
       display: block;
       font-size: 17px;
       margin-bottom: 4px;
-      /* letter-spacing: -.01em; */
+      letter-spacing: -.01em;
     }
 
     .episode-copy p {
@@ -638,7 +615,7 @@ background-color: #EFF1F5;
 
     .status {
       font-size: 11px;
-      /* letter-spacing: .12em; */
+      letter-spacing: .12em;
       text-transform: uppercase;
       padding: 6px 8px;
       border-radius: 999px;
@@ -900,8 +877,6 @@ background-color: #EFF1F5;
       }
     }
 
-
-     
     /* Home button */
     .home-btn {
       display: flex;
@@ -909,9 +884,9 @@ background-color: #EFF1F5;
       justify-content: center;
       width: 44px;
       height: 44px;
-      border-radius: 8px;
-      background: #171717;
-      
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
       cursor: pointer;
       transition: background .22s ease, border-color .22s ease, transform .22s ease, box-shadow .22s ease;
       text-decoration: none;
@@ -921,20 +896,20 @@ background-color: #EFF1F5;
       width: 22px;
       height: 22px;
       fill: none;
-      stroke:#fff;
+      stroke: rgba(43,139,255,1);
       stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
       transition: stroke .22s ease;
     }
     .home-btn:hover {
-      background: #fff;
-     
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.25);
       transform: translateY(-2px) scale(1.05);
       box-shadow: 0 6px 20px rgba(0,0,0,.35);
     }
     .home-btn:hover svg {
-      stroke: #0071d6;
+      stroke: #ffffff;
     }
     .home-btn:active {
       transform: translateY(0) scale(.97);
@@ -968,7 +943,7 @@ background-color: #EFF1F5;
       font-weight: 300;
       color: #1a3a5c;
       margin-bottom: 1rem;
-      /* letter-spacing: 0.05em; */
+      letter-spacing: 0.05em;
     }
 
     .demo-content p {
@@ -976,25 +951,6 @@ background-color: #EFF1F5;
       color: #4a6a8a;
       max-width: 600px;
       line-height: 1.6;
-    }
-
-    /* ===== TYPOGRAPHY UNIFORMATA ===== */
-    *, *::before, *::after { letter-spacing: normal !important; font-weight: 400 !important; }
-    h1, h2, h3, strong, b, .btn, .launch, .status, .panel-tab, .module-highlight, .panel-launch, .eyebrow, .tile-kicker { font-weight: 500 !important; }
-    /* ===== NO SHADOWS ===== */
-    *, *::before, *::after { box-shadow: none !important; text-shadow: none !important; filter: none !important; }
-    /* ===== HERO SPLIT ===== */
-    .hero { display: grid !important; grid-template-columns: 1fr 1fr; align-items: stretch !important; background: #fff !important; min-height: 460px; color: #171717; }
-    .hero::before { content: ''; display: block; background: url('ASSET/learning_image.png') center/cover no-repeat; min-height: 100%; }
-    .hero::after { display: none !important; }
-    .hero-content { order: 2; width: 100%; padding: 48px 52px; display: flex; flex-direction: column; justify-content: center; background: #fff; }
-    .hero h1, .hero h2 { color: #171717 !important; max-width: none; }
-    .hero p { color: #4a4d5e !important; }
-    .hero .btn-secondary { background: rgba(50,53,77,.1); color: #171717; backdrop-filter: none; }
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero::before { min-height: 260px; }
-      .hero-content { padding: 28px 22px; }
     }
   </style>
 </head>
@@ -1061,7 +1017,15 @@ background-color: #EFF1F5;
         </div>
       </div>
 
+      <!-- <div class="panel-tabs">
+        
+        <div class="panel-tab active">Modules</div>
+       
+      </div> -->
 
+      <div class="episodes">
+        <div class="episodes-grid" id="episodesGrid"></div>
+      </div>
     </section>
 
     
@@ -1069,28 +1033,28 @@ background-color: #EFF1F5;
     const library = {
       course1: {
         title: 'Program Onboarding',
-        metaA: 'Alpitronic Academy',
+        metaA: 'Academy',
         metaB: '8 Module',
         art: 'img2.jpg',
         tiles: [
           {
             n: 'Module 01',
-            domanda: 'What does leadership mean at Alpitronic?',
+            domanda: 'What does leadership mean?',
             durata: 'Course duration: 30 min',
             title: 'Leadership Framework Introduction & Overview',
             subtitle: 'Introduction to the Framework',
-            desc: 'People Managers understand how leadership is defined at Alpitronic, they understand what is expected of them and what Alpitronic provides them with to help them succeed as leaders.',
+            desc: 'People Managers understand how leadership is defined, they understand what is expected of them and what provides them with to help them succeed as leaders.',
             img: 'ASSET/MOD_1.png',
             locked: false,
             url: '#'
           },
           {
             n: 'Module 02',
-            domanda: 'What we stand for at Alpitronic',
+            domanda: 'What we stand for at company',
             durata: 'Course duration: 30 min',
             title: 'Values & Identity',
-            subtitle: 'Introduction to Alpitronic values and people vision',
-            desc: 'People Managers know what Alpitronic\'s values are and how they are expected to contribute to them, they understand Alpitronic\'s vision and mission, they know what made Alpitronic what it is today.',
+            subtitle: 'Introduction to Company values and people vision',
+            desc: 'People Managers know what Company\'s values are and how they are expected to contribute to them, they understand Company\'s vision and mission, they know what made Company what it is today.',
             img: 'ASSET/MOD_2.png',
             locked: true,
             url: '#'
@@ -1135,7 +1099,7 @@ background-color: #EFF1F5;
             durata: 'Course duration: 30 min',
             title: 'HR Policies & Compliance',
             subtitle: 'IMS',
-            desc: 'People Managers know how Alpitronic ensures that there is a certain standard to how work is carried out.',
+            desc: 'People Managers know how Company ensures that there is a certain standard to how work is carried out.',
             img: 'ASSET/MOD_6.png',
             locked: true,
             url: '#'
@@ -1155,8 +1119,8 @@ background-color: #EFF1F5;
             n: 'Module 08',
             domanda: 'How does compensation work?',
             durata: 'Course duration: 30 min',
-            title: 'Alpitronic Compensation Framework',
-            subtitle: 'Alpitronic Salary Cyc',
+            title: 'Compensation Framework',
+            subtitle: 'Company Salary Cyc',
             desc: 'People Managers know how the salary cycle works and how bonus is linked to performance.',
             img: 'ASSET/MOD_8.png',
             locked: true,
@@ -1167,7 +1131,7 @@ background-color: #EFF1F5;
             domanda: 'Think like a project leader, deliver like one',
             durata: 'Course duration: 6 min',
             title: 'Fundamentals of Project Management',
-            subtitle: 'Alpitronic Salary Cyc',
+            subtitle: 'Company Salary Cyc',
             desc: 'People Managers understand why a project management mindset is essential to their role, learn the key concepts behind effective project delivery, and apply six Golden Rules to manage initiatives with clarity and accountability.',
             img: 'ASSET/MOD_9.png',
             locked: true,
@@ -1288,6 +1252,145 @@ background-color: #EFF1F5;
  (() => {
     'use strict';
 
+    /* ──────────────────────────────────────────────
+       CONFIGURATION — tweak these to taste
+    ────────────────────────────────────────────── */
+    const CONFIG = {
+      // Particle count is relative to canvas area
+      particleDensity: 0.00012,   // particles per px² (increase for denser mesh)
+      minParticles: 80,
+      maxParticles: 300,
+
+      // Appearance
+      nodeColor: '#1565a0',       // blue nodes
+      lineColor: 'rgba(21, 101, 160, ',  // line base (alpha appended dynamically)
+      nodeMinRadius: 1.5,
+      nodeMaxRadius: 3.5,
+      lineWidth: 0.6,
+
+      // Connections
+      connectionDistance: 160,     // max px distance to draw a line
+
+      // Movement
+      speedMin: 0.15,
+      speedMax: 0.45,
+
+      // Concentration: particles spawn more densely in the top-left quadrant
+      // to mimic the reference image pattern
+      concentrationBias: 0.65,    // 0 = uniform, 1 = fully top-left
+    };
+
+    /* ──────────────────────────────────────────────
+       SETUP
+    ────────────────────────────────────────────── */
+    const canvas = document.getElementById('network-bg');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let width, height;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    function biasedRandom(bias) {
+      // Returns a value between 0 and 1, biased toward 0
+      // Higher bias → more values near 0
+      const r = Math.random();
+      return Math.pow(r, 1 + bias * 2);
+    }
+
+    function createParticles() {
+      const area = width * height;
+      let count = Math.round(area * CONFIG.particleDensity);
+      count = Math.max(CONFIG.minParticles, Math.min(CONFIG.maxParticles, count));
+
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        const useBias = Math.random() < CONFIG.concentrationBias;
+        particles.push({
+          x: useBias ? biasedRandom(0.6) * width : Math.random() * width,
+          y: useBias ? biasedRandom(0.5) * height : Math.random() * height,
+          vx: (Math.random() - 0.5) * 2 * CONFIG.speedMax,
+          vy: (Math.random() - 0.5) * 2 * CONFIG.speedMax,
+          r: CONFIG.nodeMinRadius + Math.random() * (CONFIG.nodeMaxRadius - CONFIG.nodeMinRadius),
+        });
+      }
+    }
+
+    /* ──────────────────────────────────────────────
+       ANIMATION LOOP
+    ────────────────────────────────────────────── */
+    function update() {
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Soft bounce off edges
+        if (p.x < -50) p.x = width + 50;
+        if (p.x > width + 50) p.x = -50;
+        if (p.y < -50) p.y = height + 50;
+        if (p.y > height + 50) p.y = -50;
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+
+      const maxDist = CONFIG.connectionDistance;
+      const maxDist2 = maxDist * maxDist;
+
+      // Draw lines
+      ctx.lineWidth = CONFIG.lineWidth;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist2 = dx * dx + dy * dy;
+
+          if (dist2 < maxDist2) {
+            const dist = Math.sqrt(dist2);
+            const alpha = 1 - dist / maxDist;
+            ctx.strokeStyle = CONFIG.lineColor + (alpha * 0.45).toFixed(3) + ')';
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw nodes
+      ctx.fillStyle = CONFIG.nodeColor;
+      for (const p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function loop() {
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    /* ──────────────────────────────────────────────
+       INIT
+    ────────────────────────────────────────────── */
+    resize();
+    createParticles();
+    loop();
+
+    // Debounced resize handler
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        resize();
+        createParticles();
+      }, 250);
+    });
   })();
   </script>
 </body>

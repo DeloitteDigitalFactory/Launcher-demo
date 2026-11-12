@@ -4,26 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>People Manager Onboarding</title>
- 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
-
-    @font-face {
-  font-family: "PP Neue Montreal";
-  src: url("ASSET/fonts/PPNeueMontreal-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: auto;
-  
-}
-
-
     :root {
-      --bg: #eff1f5;
-      --bg-2: #eff1f5;
+      --bg: #001629;
+      --bg-2: #121523;
       --panel: #181c2d;
       --card: #252840;
       --card-2: #32354d;
-      --text: #fff;
+      --text: #EBEBED;
       --muted: rgba(235,235,237,.72);
       --faint: rgba(235,235,237,.42);
       --border: rgba(255,255,255,.08);
@@ -43,11 +34,11 @@
     html { scroll-behavior: smooth; }
     html, body { margin: 0; padding: 0; }
     body {
-      font-family: "PP Neue Montreal", Arial, sans-serif;
-      /* background-image: url('ASSET/bg_home2.png'); */
-background-repeat: no-repeat;
-background-position: top right;
-background-color: #EFF1F5;
+      font-family: 'Lato', sans-serif;
+      background-image: url('ASSET/bg_home2.png');
+background-repeat: repeat-x;
+background-position: top left;
+background-color: #001529;
       
       color: var(--text);
       min-height: 100vh;
@@ -58,7 +49,7 @@ background-color: #EFF1F5;
       margin: 0 auto;
       padding: 22px 28px 64px;
     }
-/* strong.blue {color: #2b8bff !important;} */
+strong.blue {color: #2b8bff !important;}
     .topbar {
       display: flex;
       align-items: center;
@@ -78,11 +69,11 @@ background-color: #EFF1F5;
       height: 52px;
       border-radius: 12px;
       background: linear-gradient(145deg, #4b5175 0%, #252840 100%);
-      /* border: 1px solid rgba(255,255,255,.08); */
+      border: 1px solid rgba(255,255,255,.08);
       display: grid;
       place-items: center;
       font-weight: 900;
-      /* letter-spacing: .2em; */
+      letter-spacing: .08em;
       box-shadow: var(--shadow);
     }
 
@@ -90,30 +81,29 @@ background-color: #EFF1F5;
       display: block;
       color: var(--faint);
       text-transform: uppercase;
-      /* letter-spacing: .20em; */
+      letter-spacing: .14em;
       font-size: 11px;
       margin-bottom: 2px;
     }
 
     .brand-copy strong {
       font-size: 24px;
-      /* letter-spacing: -.02em; */
+      letter-spacing: -.02em;
     }
 
     .hero {
       position: relative;
       min-height: 430px;
-      border-radius: 15px;
+      border-radius: 28px;
       overflow: hidden;
       background:
-         linear-gradient(90deg, rgba(17, 17, 17, 0.96) 0%, rgba(17, 17, 17, 0.88) 34%, rgba(17, 17, 17,.58) 58%, rgba(17, 17, 17,.18) 100%),
+         linear-gradient(90deg, rgba(0,17,33,.96) 0%, rgba(0,17,33,.88) 34%, rgba(0,17,33,.58) 58%, rgba(0,17,33,.18) 100%),
         url('ASSET/hero.jpg') center/cover no-repeat;
-      
+      border: 1px solid rgb(1, 69, 129);
       box-shadow: var(--shadow);
       display: flex;
       align-items: flex-end;
       margin-bottom: 30px;
-      /* color: #fff !important; */
     }
 
     .hero::after {
@@ -135,21 +125,21 @@ background-color: #EFF1F5;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      /* padding: 8px 14px; */
-      /* border-radius: 7px; */
-      /* background: rgba(255,255,255,.08); */
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
       color: var(--secondary);
       font-size: 12px;
       text-transform: uppercase;
-      /* letter-spacing: .12em; */
+      letter-spacing: .12em;
       margin-bottom: 18px;
-      /* backdrop-filter: blur(12px); */
+      backdrop-filter: blur(12px);
     }
 
     .hero h1 {
       font-size: clamp(38px, 6vw, 68px);
       line-height: .98;
-      /* letter-spacing: .01em; */
+      letter-spacing: -.04em;
       margin: 0 0 16px;
       max-width: 10ch;
     }
@@ -170,29 +160,24 @@ background-color: #EFF1F5;
 
     .btn {
       border: 0;
-      border-radius: 8px;
+      border-radius: 999px;
       padding: 14px 22px;
-      font-weight: 400;
+      font-weight: 700;
       font-size: 15px;
       cursor: pointer;
       transition: transform .2s ease, opacity .2s ease, background .2s ease;
     }
 
-    /* .btn:hover { transform: translateY(-1px); } */
-
-    .btn:hover { 
-      background: #171717 !important;
-      color: #fff !important;
-    }
+    .btn:hover { transform: translateY(-1px); }
     .btn-primary {
-      background: #2b8bff;
-      color: #fff;
+      background: var(--secondary);
+      color: #02437f;
     }
 
     .btn-secondary {
       background: rgba(255,255,255,.12);
       color: var(--text);
-      /* border: 1px solid rgba(255,255,255,.09); */
+      border: 1px solid rgba(255,255,255,.09);
       backdrop-filter: blur(12px);
     }
 
@@ -207,8 +192,7 @@ background-color: #EFF1F5;
     .section-head h2 {
       margin: 0;
       font-size: 24px;
-      /* letter-spacing: -.02em; */
-      color: #171717 !important;
+      letter-spacing: -.02em;
     }
 
     .section-head span {
@@ -225,9 +209,9 @@ background-color: #EFF1F5;
     .course-tile {
       position: relative;
       min-height: 350px;
-      border-radius: 12px;
+      border-radius: 18px;
       overflow: hidden;
-      /* border: 2px solid transparent; */
+      border: 2px solid transparent;
       cursor: pointer;
       background: #121521;
       box-shadow: var(--shadow);
@@ -259,7 +243,7 @@ background-color: #EFF1F5;
       content: '';
       position: absolute;
       inset: 0;
-      /* background: linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.34) 45%, rgba(6,8,14,.96) 100%); */
+      background: linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.34) 45%, rgba(6,8,14,.96) 100%);
     }
 
     .course-inner {
@@ -273,20 +257,20 @@ background-color: #EFF1F5;
       display: inline-flex;
       font-size: 11px;
       text-transform: uppercase;
-      /* letter-spacing: .14em; */
-      /* padding: 6px 10px; */
+      letter-spacing: .14em;
+      padding: 6px 10px;
       border-radius: 999px;
-      /* background: rgba(255,255,255,.08); */
-      color: #171717;
+      background: rgba(255,255,255,.08);
+      color: var(--secondary);
       margin-bottom: 12px;
-      /* backdrop-filter: blur(6px); */
+      backdrop-filter: blur(6px);
     }
 
     .course-inner h3 {
       margin: 0 0 8px;
       font-size: 28px;
       line-height: 1.05;
-      /* letter-spacing: .03em; */
+      letter-spacing: -.03em;
     }
 
     .course-inner p {
@@ -299,10 +283,10 @@ background-color: #EFF1F5;
 
     .expand-panel {
       margin-top: 18px;
-      border-radius: 15px;
+      border-radius: 22px;
       overflow: hidden;
       background: #0d1019;
-      /* border: 1px solid rgba(255,255,255,.08); */
+      border: 1px solid rgba(255,255,255,.08);
       box-shadow: var(--shadow);
       display: none;
     }
@@ -394,7 +378,7 @@ background-color: #EFF1F5;
     .panel-copy h3 {
       margin: 0 0 10px;
       font-size: clamp(34px, 4vw, 52px);
-      /* letter-spacing: -.04em; */
+      letter-spacing: -.04em;
       line-height: .98;
       max-width: 12ch;
     }
@@ -412,7 +396,7 @@ background-color: #EFF1F5;
     .meta-pill {
       padding: 4px 8px;
       border-radius: 4px;
-      /* border: 1px solid rgba(255,255,255,.22); */
+      border: 1px solid rgba(255,255,255,.22);
       color: var(--secondary);
       font-size: 12px;
     }
@@ -430,7 +414,7 @@ background-color: #EFF1F5;
       color: var(--secondary);
       font-size: 20px;
       font-weight: 900;
-      /* letter-spacing: -.02em; */
+      letter-spacing: -.02em;
     }
 
     .progress-line {
@@ -507,7 +491,7 @@ background-color: #EFF1F5;
       padding: 18px 0 14px;
       font-size: 13px;
       font-weight: 700;
-      /* letter-spacing: .08em; */
+      letter-spacing: .08em;
       text-transform: uppercase;
       color: var(--faint);
       border-bottom: 3px solid transparent;
@@ -535,7 +519,7 @@ background-color: #EFF1F5;
       gap: 16px;
       align-items: center;
       background: rgba(255,255,255,.035);
-      /* border: 1px solid rgba(255,255,255,.07); */
+      border: 1px solid rgba(255,255,255,.07);
       border-radius: 14px;
       padding: 12px;
       transition: background .2s ease, transform .2s ease, border-color .2s ease;
@@ -574,7 +558,7 @@ background-color: #EFF1F5;
       color: var(--faint);
       margin-bottom: 4px;
       text-transform: uppercase;
-      /* letter-spacing: .12em; */
+      letter-spacing: .12em;
       font-size: 11px;
     }
 
@@ -582,7 +566,7 @@ background-color: #EFF1F5;
       display: block;
       font-size: 17px;
       margin-bottom: 4px;
-      /* letter-spacing: -.01em; */
+      letter-spacing: -.01em;
     }
 
     .episode-copy p {
@@ -601,7 +585,7 @@ background-color: #EFF1F5;
 
     .status {
       font-size: 11px;
-      /* letter-spacing: .12em; */
+      letter-spacing: .12em;
       text-transform: uppercase;
       padding: 6px 8px;
       border-radius: 999px;
@@ -636,9 +620,9 @@ background-color: #EFF1F5;
     }
 
     .helper-card {
-      border-radius: 15px;
+      border-radius: 18px;
       background: linear-gradient(180deg, rgba(37,40,64,.92) 0%, rgba(22,25,41,.96) 100%);
-      /* border: 1px solid rgba(255,255,255,.08); */
+      border: 1px solid rgba(255,255,255,.08);
       padding: 22px;
       box-shadow: var(--shadow);
     }
@@ -668,12 +652,12 @@ background-color: #EFF1F5;
     .video-wrapper {
       position: relative;
       width: 100%;
-      border-radius: 15px;
+      border-radius: 22px;
       overflow: hidden;
       background: #0d1019;
-      /* border: 1px solid rgb(1, 69, 129); */
+      border: 1px solid rgb(1, 69, 129);
     
-      border-radius: 15px 15px 0 0;
+      border-radius: 22px 22px 0 0;
       box-shadow: var(--shadow);
       aspect-ratio: 16 / 9;
     }
@@ -739,7 +723,7 @@ background-color: #EFF1F5;
       color: var(--muted);
       font-size: 15px;
       font-weight: 700;
-      /* letter-spacing: .06em; */
+      letter-spacing: .06em;
       text-transform: uppercase;
     }
 
@@ -748,16 +732,16 @@ background-color: #EFF1F5;
       align-items: center;
       gap: 16px;
       padding: 16px 22px;
-      background: #fff;
-      /* border-left: 1px solid rgb(1, 69, 129);
+      background: rgba(255,255,255,.03);
+      border-left: 1px solid rgb(1, 69, 129);
        border-right: 1px solid rgb(1, 69, 129);
-        border-bottom: 1px solid rgb(1, 69, 129); */
-       
-      border-radius: 0 0 15px 15px;
+        border-bottom: 1px solid rgb(1, 69, 129);
+      
+      border-radius: 0 0 22px 22px;
     }
 
     .video-meta span {
-      color: #171717;
+      color: var(--muted);
       font-size: 14px;
     }
 
@@ -765,10 +749,10 @@ background-color: #EFF1F5;
       padding: 4px 10px;
       border-radius: 4px;
       border: 1px solid rgba(255,255,255,.18);
-      color: #0071d6;
+      color: var(--secondary);
       font-size: 12px;
       font-weight: 700;
-      /* letter-spacing: .06em; */
+      letter-spacing: .06em;
     }
 
     .footer-note {
@@ -911,9 +895,7 @@ background-color: #EFF1F5;
     }
     .btn-primary:hover {
       transform: translateY(-2px) scale(1.02);
-      /* box-shadow: 0 8px 28px rgba(235,235,237,.22); */
-      background-color: #0071d6;
-      color: #fff;
+      box-shadow: 0 8px 28px rgba(235,235,237,.22);
     }
     .btn-secondary:hover {
       transform: translateY(-2px);
@@ -1011,7 +993,7 @@ background-color: #EFF1F5;
       font-weight: 300;
       color: #1a3a5c;
       margin-bottom: 1rem;
-      /* letter-spacing: 0.05em; */
+      letter-spacing: 0.05em;
     }
 
     .demo-content p {
@@ -1021,117 +1003,6 @@ background-color: #EFF1F5;
       line-height: 1.6;
     }
 
-    /* ===== TYPOGRAPHY UNIFORMATA: spacing normale, solo Regular (400) e Medium (500) ===== */
-    *, *::before, *::after {
-      letter-spacing: normal !important;
-      font-weight: 400 !important;
-    }
-    h1, h2, h3, strong, b, .btn, .launch, .status, .panel-tab,
-    .module-highlight, .video-tag, .video-placeholder-label,
-    .tile-kicker, .eyebrow, .hero p strong {
-      font-weight: 400 !important;
-    }
-    /* ===== NO SHADOWS ===== */
-    *, *::before, *::after {
-      box-shadow: none !important;
-      text-shadow: none !important;
-      filter: none !important;
-    }
-    /* ===== COURSE TILES SPLIT: foto sx / testo dx ===== */
-    .course-strip { align-items: stretch; }
-    .course-tile {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr;
-      background: #fff !important;
-      overflow: hidden;
-      min-height: 280px;
-    }
-    .course-tile .course-backdrop {
-      position: relative !important;
-      inset: auto !important;
-      width: 100%; height: 100%;
-      min-height: 280px;
-      background-size: cover !important;
-      background-position: center !important;
-      transform: none !important;
-    }
-    .course-tile .course-inner {
-      position: relative !important;
-      inset: auto !important;
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 28px !important;
-      background: #fff !important;
-      color: #1a1a1a !important;
-    }
-    .course-tile .course-inner h3 { color: #1a1a1a !important; }
-    .course-tile .course-inner p { color: #555 !important; }
-    .course-tile .tile-kicker {
-      align-self: flex-start;
-      /* background: #f0f2f5 !important; */
-      color: #171717 !important;
-    }
-    .course-tile { cursor: default !important; }
-    .course-tile:hover { transform: none !important; }
-    .course-tile .tile-cta {
-      align-self: flex-start;
-      display: inline-block;
-      margin-top: 22px;
-      padding: 14px 22px;
-      border-radius: 8px;
-      background: #2b8bff;
-      color: #fff !important;
-      font-size: 15px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background .2s ease;
-    }
-    .course-tile .tile-cta:hover { background: #0071d6; }
-    @media (max-width: 900px) {
-      .course-tile { grid-template-columns: 1fr; }
-      .course-tile .course-backdrop { min-height: 200px; }
-    }
-    /* ===== HERO SPLIT: foto sinistra / testo destra su bianco ===== */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: stretch;
-      background: #fff;
-      min-height: 460px;
-      color: #171717;
-    }
-    .hero::after { display: none; }
-    .hero-media {
-      background: url('ASSET/BG_HERO_HOME.png') center/cover no-repeat;
-      min-height: 100%;
-    }
-    .hero-content {
-      width: 100%;
-      padding: 48px 52px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: #fff;
-    }
-    .hero .eyebrow {
-      align-self: flex-start;
-      /* background: rgba(50,53,77,.08); */
-      color: #32354d;
-      backdrop-filter: none;
-    }
-    .hero h1 { color: #171717; max-width: none; }
-    .hero p { color: #4a4d5e; max-width: 54ch; }
-    .hero p strong { font-weight: 700; }
-    .hero .btn-secondary {
-      background: rgba(50,53,77,.1);
-      color: #171717;
-      backdrop-filter: none;
-    }
-    .hero .btn-secondary:hover { background: rgba(50,53,77,.18); }
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-media { min-height: 260px; }
-      .hero-content { padding: 28px 22px; }
-    }
   </style>
 </head>
 <body>
@@ -1148,15 +1019,14 @@ background-color: #EFF1F5;
     </header>
 
     <section class="hero">
-      <div class="hero-media" role="img" aria-label="People Manager Onboarding"></div>
       <div class="hero-content">
         <div class="eyebrow">Featured learning experience</div>
         <h1>People Manager <strong class="blue"> Onboarding</strong></h1>
-        <p>A professional, reliable, and engaging onboarding experience designed to give every Alpitronic People Manager a strong leadership baseline, practical tools, and continuous support across the moments that matter.
+        <p>A professional, reliable, and engaging onboarding experience designed to give every People Manager a strong leadership baseline, practical tools, and continuous support across the moments that matter.
 <br>The program objective is to <strong class="blue">build leadership consistency from day one.</strong> </p>
         <div class="hero-actions">
           <button class="btn btn-primary" onclick="openCourse('course1')" id="btn-course1">Launch Digital Foundations</button>
-          <button class="btn btn-primary" onclick="openCourse('course2')" id="btn-course2">Launch Live Experiences</button>
+          <button class="btn btn-secondary" onclick="openCourse('course2')" id="btn-course2">Launch Live Experiences</button>
         </div>
       </div>
     </section>
@@ -1164,7 +1034,7 @@ background-color: #EFF1F5;
     <!-- ===== VIDEO PLAYER SECTION ===== -->
     <section class="video-section">
       <div class="section-head">
-        <h2>Welcome to <strong class="blue">People Manager</strong> at Alpitronic</h2>
+        <h2>Welcome to <strong class="blue">People Manager</strong> Onboarding</h2>
        
       </div>
       <div class="video-wrapper">
@@ -1173,13 +1043,13 @@ background-color: #EFF1F5;
           <span class="video-placeholder-label">Play video</span>
         </div>
         <video id="video-intro" controls preload="metadata" poster="ASSET/poster_video.png">
-          <source src="ASSET/Alpitronics_teaser.mp4" type="video/mp4">
+          <source src="ASSET/video_teaser.mp4" type="video/mp4">
           Il tuo browser non supporta il tag video.
         </video>
       </div>
       <div class="video-meta">
-        <!-- <span class="video-tag">Video teaser</span> -->
-        <span>Video teaser</span>
+        <span class="video-tag">Video teaser</span>
+        <span>People Manager Onboarding</span>
         <span>⏱ 48 sec</span>
       </div>
     </section>
@@ -1190,23 +1060,21 @@ background-color: #EFF1F5;
     </div>
 
     <section class="course-strip">
-      <article class="course-tile active" id="tile-course1">
-        <div class="course-backdrop" style="background-image:url('ASSET/learning_image.png');"></div>
+      <article class="course-tile active" id="tile-course1" onclick="window.location.href='prog_1.html'">
+        <div class="course-backdrop" style="background-image:linear-gradient(180deg, rgba(50,53,77,.08), rgba(37,40,64,.55)), url('ASSET/learning_image.png');"></div>
         <div class="course-inner">
           <div class="tile-kicker">E-learning courses</div>
           <h3><strong class="blue">Digital</strong> Foundations</h3>
           <p>Build your leadership baseline with concise, on-demand e-learning modules covering frameworks, tools, policies, and more.</p>
-          <a class="tile-cta" href="prog_1.html">Launch Digital Foundations</a>
         </div>
       </article>
 
-      <article class="course-tile" id="tile-course2">
-        <div class="course-backdrop" style="background-image:url('ASSET/live_image.png');"></div>
+      <article class="course-tile" id="tile-course2" onclick="window.location.href='prog_2.html'">
+        <div class="course-backdrop" style="background-image:linear-gradient(180deg, rgba(50,53,77,.08), rgba(37,40,64,.55)), url('ASSET/live_image.png');"></div>
         <div class="course-inner">
           <div class="tile-kicker">In-person sessions</div>
           <h3><strong class="blue">Live</strong> Experiences</h3>
           <p>Deepen your skills through interactive in-person sessions, coaching, and hands-on leadership practice with your peers.</p>
-          <a class="tile-cta" href="prog_2.html">Launch Live Experiences</a>
         </div>
       </article>
     </section>
@@ -1215,7 +1083,7 @@ background-color: #EFF1F5;
 <!-- ===== VIDEO 2 ===== -->
 <section class="video-section">
   <div class="section-head">
-    <h2>CHRO - <strong class="blue">Andreas Rogger</strong> presentation</h2>
+    <h2><strong class="blue">Tutor</strong> presentation</h2>
     
   </div>
   <div class="video-wrapper  video-wrapper2">
@@ -1224,13 +1092,13 @@ background-color: #EFF1F5;
       <span class="video-placeholder-label">Play video</span>
     </div>
     <video id="video-video2" controls preload="metadata" poster="ASSET/CHRO_poster.png">
-      <source src="ASSET/Alpitronic_CHRO.mp4" type="video/mp4">
+      <source src="ASSET/CHRO.mp4" type="video/mp4">
     </video>
   </div>
   <div class="video-meta">
-        <!-- <span class="video-tag">Video CHRO</span> -->
-        <span>Video CHRO</span>
-        <span>⏱ 3 min</span>
+        <!-- <span class="video-tag">Video Tutor</span> -->
+        <span><strong>Tutor</strong> presentation</span>
+        <span>⏱ 20 sec</span>
       </div>
 </section>
 
@@ -1529,7 +1397,145 @@ background-color: #EFF1F5;
   (() => {
     'use strict';
 
-    
+    /* ──────────────────────────────────────────────
+       CONFIGURATION — tweak these to taste
+    ────────────────────────────────────────────── */
+    const CONFIG = {
+      // Particle count is relative to canvas area
+      particleDensity: 0.00012,   // particles per px² (increase for denser mesh)
+      minParticles: 80,
+      maxParticles: 300,
+
+      // Appearance
+      nodeColor: '#1565a0',       // blue nodes
+      lineColor: 'rgba(21, 101, 160, ',  // line base (alpha appended dynamically)
+      nodeMinRadius: 1.5,
+      nodeMaxRadius: 3.5,
+      lineWidth: 0.6,
+
+      // Connections
+      connectionDistance: 160,     // max px distance to draw a line
+
+      // Movement
+      speedMin: 0.15,
+      speedMax: 0.45,
+
+      // Concentration: particles spawn more densely in the top-left quadrant
+      // to mimic the reference image pattern
+      concentrationBias: 0.65,    // 0 = uniform, 1 = fully top-left
+    };
+
+    /* ──────────────────────────────────────────────
+       SETUP
+    ────────────────────────────────────────────── */
+    const canvas = document.getElementById('network-bg');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let width, height;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    function biasedRandom(bias) {
+      // Returns a value between 0 and 1, biased toward 0
+      // Higher bias → more values near 0
+      const r = Math.random();
+      return Math.pow(r, 1 + bias * 2);
+    }
+
+    function createParticles() {
+      const area = width * height;
+      let count = Math.round(area * CONFIG.particleDensity);
+      count = Math.max(CONFIG.minParticles, Math.min(CONFIG.maxParticles, count));
+
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        const useBias = Math.random() < CONFIG.concentrationBias;
+        particles.push({
+          x: useBias ? biasedRandom(0.6) * width : Math.random() * width,
+          y: useBias ? biasedRandom(0.5) * height : Math.random() * height,
+          vx: (Math.random() - 0.5) * 2 * CONFIG.speedMax,
+          vy: (Math.random() - 0.5) * 2 * CONFIG.speedMax,
+          r: CONFIG.nodeMinRadius + Math.random() * (CONFIG.nodeMaxRadius - CONFIG.nodeMinRadius),
+        });
+      }
+    }
+
+    /* ──────────────────────────────────────────────
+       ANIMATION LOOP
+    ────────────────────────────────────────────── */
+    function update() {
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Soft bounce off edges
+        if (p.x < -50) p.x = width + 50;
+        if (p.x > width + 50) p.x = -50;
+        if (p.y < -50) p.y = height + 50;
+        if (p.y > height + 50) p.y = -50;
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+
+      const maxDist = CONFIG.connectionDistance;
+      const maxDist2 = maxDist * maxDist;
+
+      // Draw lines
+      ctx.lineWidth = CONFIG.lineWidth;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist2 = dx * dx + dy * dy;
+
+          if (dist2 < maxDist2) {
+            const dist = Math.sqrt(dist2);
+            const alpha = 1 - dist / maxDist;
+            ctx.strokeStyle = CONFIG.lineColor + (alpha * 0.45).toFixed(3) + ')';
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw nodes
+      ctx.fillStyle = CONFIG.nodeColor;
+      for (const p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function loop() {
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    /* ──────────────────────────────────────────────
+       INIT
+    ────────────────────────────────────────────── */
+    resize();
+    createParticles();
+    loop();
+
+    // Debounced resize handler
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        resize();
+        createParticles();
+      }, 250);
+    });
   })();
   
   </script>
